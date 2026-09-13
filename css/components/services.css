@@ -1,0 +1,147 @@
+/* ==========================================================================
+   SERVICES & VALUE PROPOSITION STYLES ("More Than Just Documentation")
+   ========================================================================== */
+
+.services-section {
+  position: relative;
+  background-color: var(--bg-navy-alt);
+  color: var(--text-light);
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+  overflow: hidden;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.services-info-col {
+  position: relative;
+  z-index: 2;
+}
+
+.services-title {
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+  line-height: 1.15;
+  color: #ffffff;
+  margin-bottom: 1.5rem;
+}
+
+.services-desc {
+  font-size: 1.05rem;
+  color: var(--text-muted-light);
+  margin-bottom: 2.5rem;
+  line-height: 1.7;
+}
+
+/* Service List Accordion / Items */
+.service-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.service-item {
+  padding: 1.5rem 1.75rem;
+  border-radius: var(--radius-md);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(10px);
+  transition: var(--transition-smooth);
+}
+
+.service-item:hover {
+  background: rgba(197, 160, 89, 0.08);
+  border-color: var(--accent-gold);
+  transform: translateX(8px);
+}
+
+.service-item-header {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.service-number {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--accent-gold);
+}
+
+.service-name {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  letter-spacing: 0.08em;
+  color: #ffffff;
+}
+
+.service-detail {
+  font-size: 0.875rem;
+  color: var(--text-muted-light);
+  margin-top: 0.5rem;
+  margin-left: 2.75rem;
+}
+
+/* Right Media & Review Testimonial Card */
+.services-media-col {
+  position: relative;
+  z-index: 2;
+}
+
+.services-media-frame {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--glass-border);
+}
+
+.services-img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  display: block;
+}
+
+/* Floating Testimonial Review Box */
+.review-card-floating {
+  position: absolute;
+  bottom: -25px;
+  left: -30px;
+  right: 30px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  color: var(--text-dark);
+  padding: 1.5rem;
+  border-radius: var(--radius-md);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(197, 160, 89, 0.4);
+}
+
+.review-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.reviewer-name {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--bg-navy);
+}
+
+.review-stars {
+  color: var(--accent-gold);
+  font-size: 0.85rem;
+}
+
+.review-text {
+  font-size: 0.85rem;
+  color: var(--text-muted-dark);
+  font-style: italic;
+}

@@ -1,0 +1,205 @@
+/* ==========================================================================
+   INTERACTIVE MOTION SURAT / 3D ENVELOPE ANIMATION SECTION
+   ========================================================================== */
+
+.envelope-section {
+  position: relative;
+  background: linear-gradient(180deg, var(--bg-navy-alt) 0%, var(--bg-navy) 100%);
+  padding-top: 7rem;
+  padding-bottom: 9rem;
+  overflow: hidden;
+  color: #ffffff;
+}
+
+.envelope-header {
+  text-align: center;
+  max-width: 650px;
+  margin: 0 auto 4rem;
+  position: relative;
+  z-index: 2;
+}
+
+.envelope-title {
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  color: #ffffff;
+}
+
+.envelope-subtitle {
+  font-size: 0.95rem;
+  color: var(--text-muted-light);
+  margin-top: 0.75rem;
+}
+
+/* 3D Stage Container */
+.envelope-wrapper {
+  position: relative;
+  max-width: 580px;
+  margin: 0 auto;
+  perspective: 1200px;
+  z-index: 2;
+}
+
+/* Envelope Body Container */
+.envelope-container {
+  position: relative;
+  width: 100%;
+  height: 360px;
+  background: #0d1724;
+  border-radius: var(--radius-md);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 0 30px rgba(197, 160, 89, 0.15);
+  border: 1px solid var(--accent-gold);
+  cursor: pointer;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-style: preserve-3d;
+}
+
+.envelope-container:hover {
+  transform: translateY(-5px) rotateX(4deg);
+}
+
+/* Envelope Flaps (CSS Triangles / Polygons) */
+.envelope-flap-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 190px;
+  background: #111f30;
+  clip-path: polygon(0 0, 50% 100%, 100% 0);
+  border-top: 1px solid var(--accent-gold);
+  transform-origin: top center;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 5;
+}
+
+.envelope-flap-left {
+  position: absolute;
+  inset: 0;
+  background: #0f1c2c;
+  clip-path: polygon(0 0, 50% 50%, 0 100%);
+  z-index: 4;
+}
+
+.envelope-flap-right {
+  position: absolute;
+  inset: 0;
+  background: #0f1c2c;
+  clip-path: polygon(100% 0, 50% 50%, 100% 100%);
+  z-index: 4;
+}
+
+.envelope-flap-bottom {
+  position: absolute;
+  inset: 0;
+  background: #0b1522;
+  clip-path: polygon(0 100%, 50% 45%, 100% 100%);
+  z-index: 4;
+}
+
+/* Gold Wax Seal Badge */
+.wax-seal {
+  position: absolute;
+  top: 170px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 75px;
+  height: 75px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, #e6ca85 0%, #c5a059 50%, #94712d 100%);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5), inset 0 2px 4px rgba(255, 255, 255, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 6;
+  transition: var(--transition-smooth);
+}
+
+.wax-seal-inner {
+  width: 60px;
+  height: 60px;
+  border-radius: var(--radius-full);
+  border: 1px dashed rgba(10, 17, 24, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #0b1522;
+  letter-spacing: 0.05em;
+}
+
+/* The Letter Card inside the Envelope */
+.letter-card {
+  position: absolute;
+  left: 5%;
+  right: 5%;
+  top: 15px;
+  height: 330px;
+  background: #fcfbfa;
+  color: var(--text-dark);
+  border-radius: var(--radius-sm);
+  padding: 2.25rem 2rem;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+  border: 1px solid var(--accent-gold-light);
+  z-index: 3;
+  transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.letter-watermark {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, rgba(197, 160, 89, 0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.letter-title {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  color: var(--bg-navy);
+  margin-bottom: 0.5rem;
+}
+
+.letter-body {
+  font-size: 0.9rem;
+  color: var(--text-muted-dark);
+  line-height: 1.7;
+}
+
+.letter-signature {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--accent-gold);
+  margin-top: 1rem;
+}
+
+/* OPENED STATE ANIMATION CLASSES */
+.envelope-container.open .envelope-flap-top {
+  transform: rotateX(180deg);
+  z-index: 2;
+}
+
+.envelope-container.open .wax-seal {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.5);
+  pointer-events: none;
+}
+
+.envelope-container.open .letter-card {
+  transform: translateY(-220px);
+  z-index: 7;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Control Button Below Envelope */
+.envelope-controls {
+  text-align: center;
+  margin-top: 3rem;
+  position: relative;
+  z-index: 10;
+}

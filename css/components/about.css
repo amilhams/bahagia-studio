@@ -1,0 +1,233 @@
+/* ==========================================================================
+   ABOUT US SECTION COMPONENT STYLES
+   ========================================================================== */
+
+.about-section {
+  position: relative;
+  background-color: #fcfbfa;
+  color: #111827;
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+  overflow: hidden;
+}
+
+.about-container {
+  max-width: 1480px;
+  margin: 0 auto;
+  padding-left: clamp(1.5rem, 4vw, 4.5rem);
+  padding-right: clamp(1.5rem, 4vw, 4.5rem);
+}
+
+.about-grid {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3.5rem;
+}
+
+/* Left Content Column */
+.about-content {
+  flex: 1;
+  max-width: 520px;
+}
+
+.about-eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  color: #cca43b;
+  margin-bottom: 1.5rem;
+}
+
+.about-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.4rem, 4.2vw, 4rem);
+  font-weight: 400;
+  line-height: 1.08;
+  color: #111827;
+  letter-spacing: 0.02em;
+  margin-bottom: 2rem;
+}
+
+.about-title-gold {
+  color: #cca43b;
+  display: block;
+}
+
+.about-description {
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #556270;
+  margin-bottom: 2.25rem;
+}
+
+.about-signature {
+  font-family: 'Pinyon Script', 'Alex Brush', 'Great Vibes', cursive;
+  font-size: 3.2rem;
+  color: #cca43b;
+  line-height: 1.1;
+  margin-bottom: 2rem;
+}
+
+.about-divider {
+  width: 100%;
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.08);
+  margin-bottom: 2.25rem;
+}
+
+.about-stats-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 5rem;
+}
+
+.about-stat-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.stat-main {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: #111827;
+  line-height: 1.1;
+}
+
+.stat-sub {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: #8896a6;
+}
+
+/* Right Collage Column & Floating Card Overlay */
+.about-collage-wrapper {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.collage-container {
+  position: relative;
+  width: 771.05px;
+  max-width: 100%;
+}
+
+.about-collage-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.06));
+}
+
+/* Quote Card Overlay */
+.about-quote-card {
+  position: absolute;
+  bottom: 5%;
+  left: 25%;
+  width: 384px;
+  max-width: 85%;
+  background-color: #194462;
+  color: #ffffff;
+  padding: 2.2rem 2.25rem;
+  border-radius: 4px;
+  box-shadow: 0 20px 45px rgba(10, 20, 35, 0.35);
+  z-index: 5;
+  transition: transform 0.3s ease;
+}
+
+.about-quote-card:hover {
+  transform: translateY(-4px);
+}
+
+.quote-card-badge {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: #cca43b;
+  color: #0c1722;
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0.05em;
+  margin-bottom: 1.5rem;
+}
+
+.quote-card-text {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.3rem;
+  line-height: 1.35;
+  color: #ffffff;
+  margin-bottom: 1.5rem;
+}
+
+.quote-card-divider {
+  width: 100%;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.18);
+  margin-bottom: 1.25rem;
+}
+
+.quote-card-brand {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: #84a2be;
+}
+
+/* Responsive queries */
+@media (max-width: 1200px) {
+  .about-grid {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4rem;
+  }
+
+  .about-content {
+    max-width: 100%;
+  }
+
+  .about-collage-wrapper {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .collage-container {
+    width: 100%;
+    max-width: 771.05px;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-section {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  .about-stats-row {
+    gap: 3rem;
+  }
+
+  .about-quote-card {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    width: 100%;
+    max-width: 100%;
+    margin-top: 1.5rem;
+  }
+}

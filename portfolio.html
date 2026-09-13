@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portofolio - Bahagia Studio</title>
+  <meta name="description"
+    content="Kurasi Portofolio Dokementasi Pernikahan, Family Gathering, dan Couple Session dari Bahagia Studio. Sinematografi dan Fotografi Luxury & Abadi.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cinzel+Decorative:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Pinyon+Script&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+
+  <!-- ==========================================
+       1. HEADER & NAVIGATION BAR
+       ========================================== -->
+  <header class="site-header site-header-about">
+    <div class="container">
+      <nav class="navbar">
+        <!-- Brand Logo -->
+        <a href="index.html" class="brand-logo">
+          <img src="assets/images/logo/logo-utama.png" alt="Bahagia Studio Icon" class="brand-logo-icon">
+          <img src="assets/images/logo/logo-tulisan-ratakiri.png" alt="Bahagia Studio" class="brand-logo-text">
+        </a>
+
+        <!-- Nav Links -->
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link">HOME</a></li>
+          <li><a href="about.html" class="nav-link">ABOUT US</a></li>
+          <li><a href="portfolio.html" class="nav-link active">PORTOFOLIO</a></li>
+          <li><a href="index.html#services" class="nav-link">SERVICES</a></li>
+        </ul>
+
+        <!-- Right CTA & Tagline -->
+        <div class="nav-right-wrapper">
+          <a href="https://wa.me/6282137981224?text=Halo%20Bahagia%20Studio,%20saya%20ingin%20konsultasi"
+            target="_blank" class="btn nav-cta-btn">LET'S TALK &rarr;</a>
+        </div>
+
+        <!-- Mobile Menu Toggle -->
+        <button class="mobile-toggle" aria-label="Toggle Navigation Menu">
+          &#9776;
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ==========================================
+         2. SECTION 1: HERO SHOWCASE BANNER
+         ========================================== -->
+    <section class="porto-hero-section">
+      <div class="container">
+        <div class="porto-hero-grid">
+          <div class="porto-hero-left">
+            <span class="porto-hero-badge">OUR PORTFOLIO</span>
+            <h1 class="porto-hero-title">
+              Real Stories,<br>
+              <span class="title-gold">Beautifully Captured.</span>
+            </h1>
+          </div>
+          <div class="porto-hero-right">
+            <p class="porto-hero-desc">
+              Setiap cerita memiliki keindahan yang unik. Arsip kurasi pernikahan intim, kemegahan tradisi
+              nusantara, dan perayaan penuh sukacita di Jakarta, Bali, hingga mancanegara.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         3. SECTION 2: SPLIT 2-COLUMN PORTFOLIO SHOWCASE
+         ========================================== -->
+    <section id="portfolio-showcase" class="porto-showcase-section">
+      <div class="porto-showcase-fullwidth">
+        <div class="porto-showcase-wrapper">
+          <!-- Left Column Sidebar -->
+          <aside class="porto-sidebar-left">
+            <div class="porto-sidebar-bg-overlay"></div>
+
+            <div class="porto-sidebar-content">
+              <div class="porto-sidebar-top">
+                <span class="porto-sidebar-top-badge">SELECTED ARCHIVES</span>
+                <h2 class="porto-sidebar-heading">Capture Unforgettable Moments</h2>
+                <p class="porto-sidebar-subtext">
+                  Kumpulan momen yang kami abadikan untuk menjadi bagian dari cerita.
+                </p>
+              </div>
+              <nav class="porto-category-menu">
+                <button class="porto-menu-item active" data-category="wedding">
+                  <span class="menu-num">01</span>
+                  <span class="menu-title">Wedding</span>
+                </button>
+                <button class="porto-menu-item" data-category="family">
+                  <span class="menu-num">02</span>
+                  <span class="menu-title">Family Gathering</span>
+                </button>
+                <button class="porto-menu-item" data-category="couple">
+                  <span class="menu-num">03</span>
+                  <span class="menu-title">Couple Session</span>
+                </button>
+              </nav>
+            </div>
+          </aside>
+
+          <!-- Right Column Showcase -->
+          <div class="porto-showcase-right">
+            <div class="porto-filter-bar">
+              <button class="porto-filter-btn active" data-filter="photo">PHOTO</button>
+              <button class="porto-filter-btn" data-filter="video">VIDEO</button>
+              <button class="porto-filter-btn" data-filter="wcc">REAL TIME STORY / CONTENT CREATOR</button>
+            </div>
+            <div class="porto-grid-container">
+              <div id="portoGrid" class="porto-grid"></div>
+              <div id="loadStatus" class="porto-load-status"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         4. SECTION 3: FOOTER & CONTACT CTA
+         ========================================== -->
+    <footer id="contact" class="footer-section">
+      <div class="container footer-container">
+        <!-- Eyebrow Subtitle -->
+        <div class="footer-eyebrow">Let's Tell Your Story</div>
+
+        <!-- Highlight Badge -->
+        <div class="footer-badge">RESERVATIONS &amp; INQUIRIES</div>
+
+        <!-- Main Title -->
+        <h2 class="footer-title">
+          Let's Create<br>
+          Something <span class="footer-title-gold">Beautiful.</span>
+        </h2>
+
+        <!-- Description Paragraph -->
+        <p class="footer-desc">
+          Kami siap mendengar cerita cinta Anda dan<br>
+          membantu mewujudkannya menjadi memori visual<br>
+          yang tak lekang oleh waktu.
+        </p>
+
+        <!-- Contact Info Stack -->
+        <div class="footer-contact-list">
+          <a href="https://wa.me/6282137981224?text=Halo%20Bahagia%20Studio,%20saya%20ingin%20konsultasi"
+            target="_blank" class="contact-item">
+            <div class="contact-icon-circle">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+              </svg>
+            </div>
+            <div class="contact-details">
+              <span class="contact-tag">CHAT WITH US</span>
+              <span class="contact-val">+62 821-3798-1224</span>
+            </div>
+          </a>
+
+          <a href="mailto:bahagiaastudio@gmail.com" class="contact-item">
+            <div class="contact-icon-circle">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+              </svg>
+            </div>
+            <div class="contact-details">
+              <span class="contact-tag">SEND AN EMAIL</span>
+              <span class="contact-val">bahagiaastudio@gmail.com</span>
+            </div>
+          </a>
+
+          <div class="contact-item">
+            <div class="contact-icon-circle">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+            </div>
+            <div class="contact-details">
+              <span class="contact-tag">OUR LOCATION</span>
+              <span class="contact-val">Srengseng Sawah, Jakarta Selatan, Indonesia</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Horizontal Divider Line -->
+        <div class="footer-divider-line"></div>
+
+        <!-- Bottom Footer Bar -->
+        <div class="footer-bottom-bar">
+          <div class="footer-brand-logo">
+            <img src="assets/images/logo/logo-utama.png" alt="Bahagia Studio Logo" class="footer-logo-img">
+          </div>
+
+          <div class="footer-social-links">
+            <a href="https://www.instagram.com/bahagiastudio/" target="_blank" class="footer-social-link">Instagram</a>
+            <a href="https://www.tiktok.com/@bahagiastudio_" target="_blank" class="footer-social-link">TikTok</a>
+          </div>
+
+          <div class="footer-copyright">
+            &copy; 2026 Bahagia Studio. All rights reserved.
+          </div>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <!-- Video Lightbox Modal Structure -->
+  <div id="videoModal" class="video-modal" aria-hidden="true">
+    <div class="video-modal-content">
+      <button id="videoModalClose" class="video-modal-close" aria-label="Close Video">&times;</button>
+      <div id="videoModalContainer" style="width:100%; height:100%;"></div>
+    </div>
+  </div>
+
+  <!-- JavaScript Modules -->
+  <script type="module" src="js/main.js"></script>
+  <script src="js/modules/portfolio-page.js"></script>
+</body>
+
+</html>

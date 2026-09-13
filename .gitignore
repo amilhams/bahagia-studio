@@ -1,0 +1,14 @@
+﻿# Video files (large, served from YouTube instead)
+*.mp4
+*.mov
+*.avi
+*.mkv
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+*.swp

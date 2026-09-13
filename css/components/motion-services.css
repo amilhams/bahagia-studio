@@ -1,0 +1,449 @@
+/* ==========================================================================
+   COMBINED MOTION & SERVICES SECTION STYLES
+   ========================================================================== */
+
+.combined-motion-services-section {
+  position: relative;
+  background-color: #1C2637;
+  color: var(--text-light);
+  min-height: 1779px;
+  overflow: hidden;
+  z-index: 2;
+}
+
+/* Background Layers */
+.cms-bg-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.cms-photo-bg {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 50%;
+  object-fit: cover;
+  object-position: bottom right;
+  z-index: 1;
+  opacity: 0.85;
+  /* Masking gradient agar gambar memudar secara halus ke dasar warna #1C2637 */
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.8) 60%, rgba(0, 0, 0, 0) 100%);
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.8) 60%, rgba(0, 0, 0, 0) 100%);
+}
+
+/* Floral Decorations (bunga-biru.png) matching reference UI */
+.cms-flower-top-left {
+  position: absolute;
+  top: -100px;
+  left: -260px;
+  width: 550px;
+  z-index: 4;
+  pointer-events: none;
+  opacity: 0.9;
+
+}
+
+.cms-flower-mid-right {
+  position: absolute;
+  bottom: 750px;
+  right: -45px;
+  width: 447px;
+  transform: scaleX(-1), rotate(35deg);
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+.cms-flower-mid2-right {
+  position: absolute;
+  bottom: 900px;
+  right: -45px;
+  width: 447px;
+  transform: scaleX(-1), rotate(35deg);
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+.cms-flower-top-right {
+  position: absolute;
+  top: -5px;
+  right: -45px;
+  width: 447px;
+  transform: scaleX(-1), rotate(35deg);
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+.cms-flower-bottom-right {
+  position: absolute;
+  bottom: -40px;
+  right: -40px;
+  width: 340px;
+  z-index: 3;
+  pointer-events: none;
+  opacity: 0.85;
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0) 100%);
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0) 100%);
+}
+
+.cms-gradient-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  object-position: center;
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* Content Container Layer */
+.cms-content-wrapper {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --------------------------------------------------------------------------
+   PART 1: MOTION PORTION (Height: 986px)
+   -------------------------------------------------------------------------- */
+.cms-motion-part {
+  height: 986px;
+  padding-top: 4.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.cms-motion-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 2.5rem;
+}
+
+.cms-badge-tag {
+  display: inline-block;
+  background: var(--accent-gold);
+  color: #111827;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  padding: 0.25rem 0.6rem;
+  border-radius: 2px;
+  margin-bottom: 0.5rem;
+}
+
+.cms-motion-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.5rem, 5vw, 4.2rem);
+  letter-spacing: 0.04em;
+  color: #ffffff;
+  line-height: 1.1;
+
+}
+
+.cms-motion-subtitle {
+  max-width: 420px;
+  font-size: 0.95rem;
+  color: #d1d5db;
+  line-height: 1.6;
+  text-align: right;
+}
+
+/* Video Frame Container */
+.cms-video-container {
+  position: relative;
+  width: 100%;
+  flex: 1;
+  max-height: 720px;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #000;
+  cursor: pointer;
+}
+
+.cms-video-element {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cms-video-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.75) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 2.5rem;
+}
+
+.cms-video-play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: rgba(197, 160, 89, 0.35);
+  border: 1px solid var(--accent-gold);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 1.4rem;
+  box-shadow: 0 0 30px rgba(197, 160, 89, 0.5);
+  transition: var(--transition-smooth);
+}
+
+.cms-video-container:hover .cms-video-play-btn {
+  transform: translate(-50%, -50%) scale(1.15);
+  background: var(--accent-gold);
+  color: #111827;
+}
+
+.cms-video-tag-pill {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #e5e7eb;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+
+  margin-bottom: 0.75rem;
+  width: fit-content;
+}
+
+.cms-video-caption {
+  font-family: var(--font-serif);
+  font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+  color: #ffffff;
+  letter-spacing: 0.05em;
+
+}
+
+
+/* --------------------------------------------------------------------------
+   PART 2: SERVICES PORTION (Height: 793px)
+   -------------------------------------------------------------------------- */
+.cms-services-part {
+  height: auto;
+  min-height: 793px;
+  max-width: 766px;
+  width: 100%;
+  padding-top: 3.5rem;
+  padding-bottom: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+/* Seamless bottom overlay blending ke scrollytelling section */
+.combined-motion-services-section::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 350px;
+  background: linear-gradient(to bottom, transparent 0%, rgba(28, 38, 55, 0.7) 40%, #1C2637 100%);
+  z-index: 4;
+  pointer-events: none;
+}
+
+.cms-services-header {
+  margin-bottom: 2rem;
+}
+
+.cms-services-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+  color: #ffffff;
+  letter-spacing: 0.04em;
+  line-height: 1.1;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.cms-services-desc {
+  max-width: 550px;
+  font-size: 0.95rem;
+  color: #d1d5db;
+  line-height: 1.6;
+}
+
+/* Service Accordion / Table Lines */
+.cms-service-table {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+.cms-service-row {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 1.25rem 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+  transition: var(--transition-fast);
+}
+
+.cms-service-row:last-child {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.cms-service-num {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  color: var(--accent-gold);
+  font-weight: 500;
+  min-width: 2.5rem;
+}
+
+.cms-service-info {
+  flex: 1;
+}
+
+.cms-service-name {
+  font-family: var(--font-serif);
+  font-size: clamp(1.2rem, 2vw, 1.8rem);
+  color: #ffffff;
+  letter-spacing: 0.06em;
+
+}
+
+.cms-service-subtext {
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: #9ca3af;
+  margin-top: 0.25rem;
+
+}
+
+.cms-service-arrow {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 1.2rem;
+  transition: var(--transition-fast);
+}
+
+.cms-service-row:hover .cms-service-arrow {
+  color: var(--accent-gold);
+  transform: translateX(5px);
+}
+
+/* Custom Package Card Banner */
+.cms-custom-package-card {
+  background: var(--accent-gold);
+  color: #fff;
+  border-radius: 8px;
+  padding: 1.25rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.cms-cp-title {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #fff;
+}
+
+.cms-cp-sub {
+  font-size: 0.825rem;
+  color: #fff;
+  margin-top: 0.15rem;
+}
+
+.cms-cp-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #fff;
+  color: var(--accent-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+.cms-cp-btn:hover {
+  background: #fff;
+  transform: scale(1.08);
+}
+
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+  .combined-motion-services-section {
+    min-height: auto;
+  }
+
+  .cms-motion-part {
+    height: auto;
+    padding-bottom: 3rem;
+  }
+
+  .cms-services-part {
+    height: auto;
+    padding-top: 3rem;
+  }
+
+  .cms-video-container {
+    height: 450px;
+  }
+
+  .cms-motion-header {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .cms-motion-subtitle {
+    text-align: left;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .cms-video-container {
+    height: 320px;
+  }
+
+  .cms-video-overlay {
+    padding: 1.25rem;
+  }
+
+  .cms-service-row {
+    gap: 1rem;
+  }
+
+  .cms-custom-package-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .cms-cp-btn {
+    align-self: flex-end;
+  }
+}

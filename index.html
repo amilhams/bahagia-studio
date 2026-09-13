@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bahagia Studio - Wedding & Event Documentation</title>
+  <meta name="description"
+    content="Bahagia Studio - Dokumentasi pernikahan dan acara bereputasi tinggi dengan sinematografi dan fotografi berefek luxury & abadi.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cinzel+Decorative:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Pinyon+Script&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="css/main.css">
+
+  <!-- GSAP 3.x + ScrollTrigger (must load before module scripts) -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+</head>
+
+<body>
+
+  <!-- ==========================================
+       1. HEADER & NAVIGATION BAR
+       ========================================== -->
+  <header class="site-header">
+    <div class="container">
+      <nav class="navbar">
+        <!-- Brand Logo -->
+        <a href="#home" class="brand-logo">
+          <img src="assets/images/logo/logo-utama.png" alt="Bahagia Studio Icon" class="brand-logo-icon">
+          <img src="assets/images/logo/logo-tulisan-ratakiri.png" alt="Bahagia Studio" class="brand-logo-text">
+        </a>
+
+        <!-- Nav Links -->
+        <ul class="nav-menu">
+          <li><a href="#home" class="nav-link active">HOME</a></li>
+          <li><a href="about.html" class="nav-link">ABOUT US</a></li>
+          <li><a href="portfolio.html" class="nav-link">PORTOFOLIO</a></li>
+          <li><a href="#services" class="nav-link">SERVICES</a></li>
+        </ul>
+
+        <!-- Right CTA & Tagline -->
+        <div class="nav-right-wrapper">
+          <a href="https://wa.me/6282137981224?text=Halo%20Bahagia%20Studio,%20saya%20ingin%20konsultasi" target="_blank"
+            class="btn nav-cta-btn">LET'S TALK &rarr;</a>
+        </div>
+
+        <!-- Mobile Menu Toggle -->
+        <button class="mobile-toggle" aria-label="Toggle Navigation Menu">
+          &#9776;
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ==========================================
+         2. HERO SECTION
+         ========================================== -->
+    <section id="home" class="hero-section">
+      <div class="hero-bg-media">
+        <!-- High Quality Photography Background -->
+        <img src="assets/images/photo/hero-image.png" alt="Bahagia Studio Wedding Couple" class="hero-bg-img">
+        <img src="assets/images/decorations/hero-gradient.png" alt="Hero Gradient Overlay" class="hero-overlay-img">
+      </div>
+
+      <div class="container hero-container">
+        <div class="hero-content">
+          <div class="hero-badge-tag"><span class="hero-badge-line">&mdash;</span> WEDDING DOCUMENTATION</div>
+          <h1 class="hero-title">
+            <span class="hero-line">Setiap Moment Berhak </span>
+            <span class="hero-line">Untuk di Abadikan</span>
+          </h1>
+          <p class="hero-subtitle">
+            Real people. Real stories. Timeless memories crafted through intimate photographic honesty.
+          </p>
+          <div class="hero-bottom-tag">A LIFETIME IN A FRAME</div>
+        </div>
+      </div>
+
+      <a href="#portfolio" class="hero-scroll-down">
+        <span>SCROLL DOWN</span>
+        <div class="scroll-line"></div>
+      </a>
+    </section>
+
+    <!-- ==========================================
+         3. PORTFOLIO SECTION ("Real Stories")
+         ========================================== -->
+    <section id="portfolio" class="portfolio-section section-padding">
+      <!-- Botanical Decoration - Bottom Left Corner -->
+      <img src="assets/images/decorations/bunga-siku.png" class="botanical-accent botanical-bottom-left"
+        alt="Floral Decoration Bottom Left">
+      <!-- Botanical Decoration - Bottom Right Corner -->
+      <img src="assets/images/decorations/bunga-siku.png" class="botanical-accent botanical-bottom-right"
+        alt="Floral Decoration Bottom Right">
+
+      <div class="container portofolio-container">
+        <div class="portfolio-header">
+          <div class="portfolio-header-left">
+            <div class="hero-badge-tag"><span class="hero-badge-line">&mdash;</span> OUR WORK</div>
+            <h2 class="portfolio-title">
+              Real Stories,<br>
+              <span class="highlight-gold">Beautifully</span> Captured.
+            </h2>
+          </div>
+          <div class="portfolio-header-right">
+            <p class="portfolio-subtitle">
+              Setiap pernikahan memiliki jiwanya sendiri. Berikut adalah cuplikan kisah manis yang telah kami
+              dokumentasikan secara abadi.
+            </p>
+            <a href="#contact" class="btn btn-portfolio-cta">VIEW ALL STORIES</a>
+          </div>
+        </div>
+
+        <div class="portfolio-grid">
+          <!-- Card 1: Nia & Nafi -->
+          <article class="portfolio-card portfolio-card-large">
+            <div class="portfolio-img-wrapper">
+              <img src="assets/images/photo/portofolio-nita.jpg" alt="Pernikahan Nia & Nafi" class="portfolio-img">
+            </div>
+            <div class="portfolio-card-overlay">
+              <span class="portfolio-category">INTIMATE WEDDING</span>
+              <h3 class="portfolio-couple-name">Nita &amp; Dhani</h3>
+              <p class="portfolio-location">Bekasi, Jakarta</p>
+            </div>
+          </article>
+
+          <!-- Card 2: Amongpradja -->
+          <article class="portfolio-card portfolio-card-wide">
+            <div class="portfolio-img-wrapper">
+              <img src="assets/images/photo/portofolio-among.jpg" alt="Keluarga Besar Amongpradja"
+                class="portfolio-img">
+            </div>
+            <div class="portfolio-card-overlay">
+              <span class="portfolio-category">GRAND FAMILY CELEBRATION</span>
+              <h3 class="portfolio-couple-name">Keluarga Besar Amongpradja</h3>
+              <p class="portfolio-location">Grand Ballroom, Bandung</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         4 & 5. COMBINED STORIES IN MOTION & SERVICES SECTION
+         ========================================== -->
+    <section id="motion-services" class="combined-motion-services-section">
+      <!-- Background Layers (Bottom to Top) -->
+      <div class="cms-bg-layer">
+        <!-- 1. Photo Background for Service Area -->
+        <img src="assets/images/photo/service.png" alt="Service Photo Background" class="cms-photo-bg">
+
+        <!-- 2. Flower Decorations (Under Gradient Layer) -->
+        <img src="assets/images/decorations/bunga-biru.png" alt="Bunga Biru Top Left" class="cms-flower-top-left">
+        <img src="assets/images/decorations/bunga-biru.png" alt="Bunga Biru Top Right" class="cms-flower-top-right">
+        <img src="assets/images/decorations/bunga-biru.png" alt="Bunga Biru Top Right" class="cms-flower-mid-right">
+        <img src="assets/images/decorations/bunga-biru.png" alt="Bunga Biru Top Right" class="cms-flower-mid2-right">
+        <img src="assets/images/decorations/bunga-biru.png" alt="Bunga Biru Bottom Right"
+          class="cms-flower-bottom-right">
+
+        <!-- 3. Gradient Overlay Layer -->
+        <img src="assets/images/decorations/gradient-section-2.png" alt="Section 2 Gradient Overlay"
+          class="cms-gradient-overlay">
+      </div>
+
+      <div class="container cms-content-wrapper">
+        <!-- TOP PORTION: STORIES IN MOTION (986px Height Target) -->
+        <div id="motion" class="cms-motion-part">
+          <div class="cms-motion-header">
+            <div>
+              <span class="cms-badge-tag">OUR SERVICES</span>
+              <h2 class="cms-motion-title">Stories In Motion.</h2>
+            </div>
+            <p class="cms-motion-subtitle">
+              Sebuah kisah tentang dua hati yang memilih untuk berjalan bersama, dirangkai dalam setiap momen, tatapan,
+              dan janji yang terjadi di hari istimewa mereka.
+            </p>
+          </div>
+
+          <!-- Video Showcase Frame -->
+          <div class="cms-video-container" data-video="https://www.youtube.com/embed/axC9tNMVDxI?autoplay=1"
+            data-title="Nita & Dhani - Satu Janji Untuk Selamanya">
+            <img src="assets/images/portofolio/wedding/nita/photo/DSC00067.jpg"
+              class="cms-video-element" alt="Nita & Dhani Featured Heritage Film">
+            <div class="cms-video-play-btn">&#9654;</div>
+            <div class="cms-video-overlay">
+              <span class="cms-video-tag-pill">FEATURED HERITAGE FILM</span>
+              <h3 class="cms-video-caption">Nita &amp; Dhani &mdash; Satu Janji Untuk Selamanya</h3>
+            </div>
+          </div>
+        </div>
+
+        <!-- BOTTOM PORTION: OUR SERVICES (Remaining Height ~793px Target) -->
+        <div id="services" class="cms-services-part">
+          <div class="cms-services-header">
+            <span class="cms-badge-tag">OUR SERVICES</span>
+            <h2 class="cms-services-title">More Than<br>Just Documentation.</h2>
+            <p class="cms-services-desc">
+              Berbagai layanan kreatif untuk mengabadikan setiap momen penting di hari bahagia Anda dengan sentuhan
+              estetika editorial dan sinematik.
+            </p>
+          </div>
+
+          <!-- Services List Rows -->
+          <div class="cms-service-table">
+            <div class="cms-service-row">
+              <span class="cms-service-num">01</span>
+              <div class="cms-service-info">
+                <h3 class="cms-service-name">Photography</h3>
+                <p class="cms-service-subtext">AKAD, HOLY MATRIMONY, RECEPTION &amp; EDITORIAL PORTRAITS</p>
+              </div>
+              <span class="cms-service-arrow">&rarr;</span>
+            </div>
+
+            <div class="cms-service-row">
+              <span class="cms-service-num">02</span>
+              <div class="cms-service-info">
+                <h3 class="cms-service-name">Videography</h3>
+                <p class="cms-service-subtext">VIDEO FULL DOCUMENTATION</p>
+              </div>
+              <span class="cms-service-arrow">&rarr;</span>
+            </div>
+
+            <div class="cms-service-row">
+              <span class="cms-service-num">03</span>
+              <div class="cms-service-info">
+                <h3 class="cms-service-name">Real Time Story/ Content Creator</h3>
+                <p class="cms-service-subtext">INSTANT VERTICAL REELS, TIKTOK BTS, 24-HR CLOUD DELIVERY</p>
+              </div>
+              <span class="cms-service-arrow">&rarr;</span>
+            </div>
+          </div>
+
+          <!-- Custom Package Banner Card -->
+          <div class="cms-custom-package-card">
+            <div>
+              <h4 class="cms-cp-title">Custom Package</h4>
+              <p class="cms-cp-sub">Hubungi kami untuk paket yang disesuaikan dengan kebutuhan &amp; venue Anda.</p>
+            </div>
+            <a href="#contact" class="cms-cp-btn" aria-label="Contact Custom Package">&rarr;</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         6. SCROLLYTELLING CANVAS IMAGE SEQUENCE
+         ========================================== -->
+    <section id="scrollytelling" class="scrollytelling-section">
+
+      <!-- Fixed Canvas Background Layer -->
+      <canvas id="seq-canvas" class="seq-canvas"></canvas>
+
+      <!-- Progress Indicator Dots -->
+      <div class="seq-progress-dots" aria-hidden="true">
+        <span class="seq-dot active" data-section="0"></span>
+        <span class="seq-dot" data-section="1"></span>
+        <span class="seq-dot" data-section="2"></span>
+      </div>
+
+      <!-- Overlay Content Panels -->
+      <div class="seq-overlay-container">
+
+        <!-- Section 1: Frames 0–3 (no text overlay) -->
+        <div class="seq-panel seq-panel--1" id="seq-panel-1" aria-hidden="true"></div>
+
+        <!-- Section 2: Frames 4–46 (no text overlay) -->
+        <div class="seq-panel seq-panel--2" id="seq-panel-2" aria-hidden="true"></div>
+
+        <!-- Section 3: Frames 47–149 (Text + CTA Button) -->
+        <div class="seq-panel seq-panel--3" id="seq-panel-3">
+          <div class="seq-panel-inner">
+            <span class="seq-eyebrow">LET'S BEGIN</span>
+            <h2 class="seq-headline">Wujudkan Kenangan<br><em>Impian Anda</em></h2>
+            <p class="seq-body-text">
+              Hubungi kami dan ceritakan momen istimewa yang ingin<br>
+              Anda abadikan bersama Bahagia Studio.
+            </p>
+            <!-- CTA Button: muncul hanya saat frame mendekati 149 -->
+            <a href="https://wa.me/6282137981224?text=Halo%20Bahagia%20Studio,%20saya%20ingin%20konsultasi" target="_blank"
+              class="seq-cta-btn" id="seq-cta-btn" aria-label="Konsultasi dengan Bahagia Studio">
+              <span class="seq-cta-text">Mulai Cerita Anda</span>
+              <span class="seq-cta-arrow">&rarr;</span>
+            </a>
+          </div>
+        </div>
+
+      </div><!-- /.seq-overlay-container -->
+
+      <!-- Preload Overlay (hidden by default; shows when user nears section) -->
+      <div class="seq-preload-overlay is-hidden" id="seqPreloadOverlay">
+        <div class="seq-preload-inner">
+          <div class="seq-preload-logo">BS</div>
+          <div class="seq-preload-bar-wrap">
+            <div class="seq-preload-bar" id="seqPreloadBar"></div>
+          </div>
+          <span class="seq-preload-label" id="seqPreloadLabel">Memuat animasi… 0%</span>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- ==========================================
+       7. FOOTER & CALL TO ACTION
+       ========================================== -->
+  <footer id="contact" class="footer-section">
+    <div class="container footer-container">
+      <!-- Eyebrow Subtitle -->
+      <div class="footer-eyebrow">Let's Tell Your Story</div>
+
+      <!-- Highlight Badge -->
+      <div class="footer-badge">RESERVATIONS &amp; INQUIRIES</div>
+
+      <!-- Main Title -->
+      <h2 class="footer-title">
+        Let's Create<br>
+        Something <span class="footer-title-gold">Beautiful.</span>
+      </h2>
+
+      <!-- Description Paragraph -->
+      <p class="footer-desc">
+        Kami siap mendengar cerita cinta Anda dan<br>
+        membantu mewujudkannya menjadi memori visual<br>
+        yang tak lekang oleh waktu.
+      </p>
+
+      <!-- Contact Info Stack -->
+      <div class="footer-contact-list">
+        <a href="https://wa.me/6281234567890?text=Halo%20Bahagia%20Studio,%20saya%20ingin%20konsultasi" target="_blank"
+          class="contact-item">
+          <div class="contact-icon-circle">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
+          </div>
+          <div class="contact-details">
+            <span class="contact-tag">CHAT WITH US</span>
+            <span class="contact-val">+62 821-3798-1224</span>
+          </div>
+        </a>
+
+        <a href="mailto:hello@bahagiastudio.id" class="contact-item">
+          <div class="contact-icon-circle">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+              stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+            </svg>
+          </div>
+          <div class="contact-details">
+            <span class="contact-tag">SEND AN EMAIL</span>
+            <span class="contact-val">bahagiaastudio@gmail.com</span>
+          </div>
+        </a>
+
+        <div class="contact-item">
+          <div class="contact-icon-circle">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+          </div>
+          <div class="contact-details">
+            <span class="contact-tag">OUR LOCATION</span>
+            <span class="contact-val">Srengseng Sawah, Jakarta Selatan, Indonesia</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Horizontal Divider Line -->
+      <div class="footer-divider-line"></div>
+
+      <!-- Bottom Footer Bar -->
+      <div class="footer-bottom-bar">
+        <div class="footer-brand-logo">
+          <img src="assets/images/logo/logo-utama.png" alt="Bahagia Studio Logo" class="footer-logo-img">
+        </div>
+
+        <div class="footer-social-links">
+          <a href="https://www.instagram.com/bahagiastudio/" target="_blank" class="footer-social-link">Instagram</a>
+          <a href="https://www.tiktok.com/@bahagiastudio_" target="_blank" class="footer-social-link">TikTok</a>
+        </div>
+
+        <div class="footer-copyright">
+          &copy; 2026 Bahagia Studio. All rights reserved.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Video Modal Container -->
+  <div id="videoModal" class="video-modal" aria-hidden="true">
+    <div class="video-modal-content">
+      <button id="videoModalClose" class="video-modal-close" aria-label="Close Video">&times;</button>
+      <div id="videoModalContainer" style="width:100%; height:100%;"></div>
+    </div>
+  </div>
+
+  <!-- Main JavaScript File -->
+  <script type="module" src="js/main.js"></script>
+</body>
+
+</html>

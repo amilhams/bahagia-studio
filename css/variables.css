@@ -1,0 +1,54 @@
+/* ==========================================================================
+   BAHAGIA STUDIO - DESIGN SYSTEM TOKENS & VARIABLES
+   ========================================================================== */
+
+:root {
+  /* Color Palette - Primary & Neutrals */
+  --bg-dark: #0a1118;
+  --bg-navy: #0f1c2b;
+  --bg-navy-alt: #132438;
+  --bg-navy-card: rgba(18, 33, 50, 0.75);
+  --bg-light: #f9f7f2;
+  --bg-light-alt: #f1ede4;
+  --bg-card-light: #ffffff;
+
+  /* Accent Colors - Champagne Gold & Metallic Hints */
+  --accent-gold: #C29746;
+  --accent-gold-hover: #d8b46a;
+  --accent-gold-light: #e8d5a7;
+  --accent-gold-glow: rgba(197, 160, 89, 0.25);
+  --accent-navy: #182d44;
+
+  /* Text Colors */
+  --text-dark: #111827;
+  --text-muted-dark: #525a66;
+  --text-light: #f5f6f8;
+  --text-muted-light: #9ba4b0;
+  --text-gold: #d4af37;
+
+  /* Glassmorphism & Borders */
+  --glass-bg: rgba(15, 28, 43, 0.65);
+  --glass-border: rgba(197, 160, 89, 0.2);
+  --glass-border-hover: rgba(197, 160, 89, 0.5);
+  --border-light: rgba(0, 0, 0, 0.08);
+  --border-gold: rgba(197, 160, 89, 0.3);
+
+  /* Typography */
+  --font-serif: 'Cinzel Decorative', 'Cormorant Garamond', 'Playfair Display', serif;
+  --font-sans: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif;
+
+  /* Shadows */
+  --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-gold: 0 10px 30px -5px rgba(197, 160, 89, 0.3);
+
+  /* Border Radius & Layout */
+  --radius-sm: 4px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+  --container-max: 1680px;
+  --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: all 0.2s ease;
+}

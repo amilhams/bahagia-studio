@@ -1,0 +1,241 @@
+/* ==========================================================================
+   HEADER & NAVBAR COMPONENT STYLES
+   ========================================================================== */
+
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  z-index: 1000;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  transition: var(--transition-smooth);
+}
+
+.site-header.scrolled {
+  background: rgba(10, 17, 24, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  height: 80px;
+  border-bottom: 1px solid rgba(197, 160, 89, 0.15);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
+  width: 100%;
+}
+
+/* Brand Logo Styling — Real Logo Images */
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+/* Ikon simbol mahkota BS */
+.brand-logo-icon {
+  height: 32px;
+  width: auto;
+  display: block;
+  flex-shrink: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Wordmark "BAHAGIA STUDIO" rata kiri */
+.brand-logo-text {
+  height: 26px;
+  width: auto;
+  display: block;
+  flex-shrink: 0;
+  transition: opacity 0.3s ease;
+}
+
+.brand-logo:hover .brand-logo-icon,
+.brand-logo:hover .brand-logo-text {
+  opacity: 0.85;
+}
+
+/* Nav Links */
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 2.25rem;
+  list-style: none;
+}
+
+.nav-link {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  position: relative;
+  padding: 0.25rem 0;
+  transition: var(--transition-fast);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent-gold);
+  transition: var(--transition-smooth);
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--accent-gold-light);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* Nav Right Wrapper & Tagline */
+.nav-right-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.35rem;
+}
+
+.nav-tagline-text {
+  font-size: 0.65rem;
+  letter-spacing: 0.22em;
+  color: rgba(255, 255, 255, 0.45);
+  font-weight: 500;
+}
+
+/* Navbar CTA Button 137x38px Transparent */
+.nav-cta-btn {
+  width: 137px;
+  height: 38px;
+  min-width: 137px;
+  min-height: 38px;
+  padding: 0;
+  background: transparent;
+  border: 1px solid var(--accent-gold);
+  color: #ffffff;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+  transition: var(--transition-smooth);
+}
+
+.nav-cta-btn:hover {
+  background: var(--accent-gold);
+  color: var(--bg-navy);
+  border-color: var(--accent-gold);
+  box-shadow: 0 0 20px rgba(197, 160, 89, 0.4);
+}
+
+/* Mobile Toggle */
+.mobile-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text-light);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.site-header.scrolled {
+  background: rgba(15, 28, 43, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  height: 80px;
+  border-bottom: 1px solid rgba(197, 160, 89, 0.25);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+/* ==========================================================================
+   ABOUT PAGE SPECIAL NAVBAR BEHAVIOR
+   ========================================================================== */
+
+/* 1. Unscrolled (At Top): Text & elements are Dark Blue (#111827) */
+/* Logo PNG sudah berwarna gold — tidak perlu diubah warnanya */
+.site-header-about:not(.scrolled) .brand-logo-text {
+  /* Logo wordmark sudah gradient gold, tetap terlihat di background terang */
+  filter: none;
+}
+
+.site-header-about:not(.scrolled) .nav-link {
+  color: #111827;
+}
+
+.site-header-about:not(.scrolled) .nav-link:hover,
+.site-header-about:not(.scrolled) .nav-link.active {
+  color: var(--accent-gold);
+}
+
+.site-header-about:not(.scrolled) .nav-cta-btn {
+  color: #111827;
+  border-color: var(--accent-gold);
+}
+
+.site-header-about:not(.scrolled) .nav-cta-btn:hover {
+  background: var(--accent-gold);
+  color: #ffffff;
+  border-color: var(--accent-gold);
+}
+
+.site-header-about:not(.scrolled) .mobile-toggle {
+  color: #111827;
+}
+
+/* 2. Scrolled: Background becomes Dark Navy Blue, Text transitions back to White */
+.site-header-about.scrolled {
+  background: rgba(15, 28, 43, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(197, 160, 89, 0.25);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.site-header-about.scrolled .brand-title {
+  color: #ffffff;
+}
+
+.site-header-about.scrolled .nav-link {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.site-header-about.scrolled .nav-link:hover,
+.site-header-about.scrolled .nav-link.active {
+  color: var(--accent-gold-light);
+}
+
+.site-header-about.scrolled .nav-cta-btn {
+  color: #ffffff;
+  border-color: var(--accent-gold);
+}
+
+.site-header-about.scrolled .nav-cta-btn:hover {
+  background: var(--accent-gold);
+  color: var(--bg-navy);
+}
+
+.site-header-about.scrolled .mobile-toggle {
+  color: #ffffff;
+}

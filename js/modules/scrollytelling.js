@@ -89,28 +89,48 @@ export function initScrollytelling() {
     ctx.drawImage(img, dx, dy, iw * scale, ih * scale);
   }
 
-  /* ── Immediate Preloader ─────────────────────────────────────────────── */
+  /* ── Progressive Preloader: batasi beban awal, lalu lanjutkan di batch ── */
   function preloadAllFrames() {
     return new Promise((resolve) => {
+      const BATCH_SIZE = 12;
       let loaded = 0;
 
-      for (let i = 0; i < TOTAL_FRAMES; i++) {
-        const img = new Image();
-        img.src = frameSrc(i);
-        frames[i] = img;
+      function loadChunk(startIndex) {
+        const endIndex = Math.min(TOTAL_FRAMES, startIndex + BATCH_SIZE);
 
-        img.onload = img.onerror = () => {
-          loaded++;
-          const pct = Math.round((loaded / TOTAL_FRAMES) * 100);
-
-          if (preloadBar) preloadBar.style.width = pct + '%';
-          if (preloadLabel) preloadLabel.textContent = `Memuat animasi… ${pct}%`;
-
-          if (loaded === TOTAL_FRAMES) {
-            resolve();
+        for (let i = startIndex; i < endIndex; i++) {
+          if (frames[i]) {
+            loaded++;
+            continue;
           }
-        };
+
+          const img = new Image();
+          img.decoding = 'async';
+          img.loading = 'lazy';
+          img.src = frameSrc(i);
+          frames[i] = img;
+
+          img.onload = img.onerror = () => {
+            loaded++;
+            const pct = Math.round((loaded / TOTAL_FRAMES) * 100);
+
+            if (preloadBar) preloadBar.style.width = pct + '%';
+            if (preloadLabel) preloadLabel.textContent = `Memuat animasi… ${pct}%`;
+
+            if (loaded === TOTAL_FRAMES) {
+              resolve();
+            }
+          };
+        }
+
+        if (endIndex < TOTAL_FRAMES) {
+          requestAnimationFrame(() => loadChunk(endIndex));
+        } else if (loaded === TOTAL_FRAMES) {
+          resolve();
+        }
       }
+
+      loadChunk(0);
     });
   }
 

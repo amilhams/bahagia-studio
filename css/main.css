@@ -35,6 +35,12 @@ body {
   color: var(--text-dark);
   line-height: 1.6;
   overflow-x: hidden;
+  text-rendering: optimizeLegibility;
+}
+
+img {
+  max-width: 100%;
+  display: block;
 }
 
 /* Typography Helpers */

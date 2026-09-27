@@ -15,6 +15,15 @@
   color: #ffffff;
 }
 
+.hero-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: linear-gradient(90deg, rgba(6, 10, 17, 0.82) 0%, rgba(6, 10, 17, 0.5) 30%, rgba(6, 10, 17, 0.18) 58%, rgba(6, 10, 17, 0.42) 100%);
+  pointer-events: none;
+}
+
 /* Background Image & Left-Weighted Dark Gradient Overlay */
 .hero-bg-media {
   position: absolute;

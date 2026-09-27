@@ -236,7 +236,18 @@ document.addEventListener('DOMContentLoaded', () => {
       } else {
         const img = document.createElement('img');
         img.src = item.url;
-        img.alt = 'Bahagia Studio Portfolio';
+        
+        // Dynamic SEO Alt Text per category & project detail
+        let dynamicAlt = 'Dokumentasi Wedding & Prewedding Jabodetabek - Bahagia Studio';
+        if (currentCategory === 'wedding') {
+          dynamicAlt = 'Dokumentasi Pernikahan Wedding Nita & Dhani di Bekasi - Bahagia Studio Jabodetabek';
+        } else if (currentCategory === 'couple') {
+          dynamicAlt = 'Foto Prewedding & Couple Session Zico & Laras di Kebun Raya Bogor - Bahagia Studio';
+        } else if (currentCategory === 'family') {
+          dynamicAlt = 'Dokumentasi Family Gathering & Acara Keluarga Besar Amongpradja - Bahagia Studio';
+        }
+
+        img.alt = dynamicAlt;
         img.className = 'porto-card-media';
         img.loading = 'lazy';
         img.decoding = 'async'; // Menggunakan dekode gambar asynchronous agar tidak mengganggu UI rendering thread

@@ -29,20 +29,15 @@ export function initScrollytelling() {
   const FILE_PREFIX = 'frame_';
 
   // Checkpoints presisi untuk 150 frame berdasarkan step scroll:
-  // Scroll 1 (Step 0): Hilangkan gradient pembatas (Frame 0)
-  // Scroll 2 (Step 1): Frame 0 -> 4
-  // Scroll 3 (Step 2): Frame 4 -> 47
-  // Scroll 4 (Step 3): Frame 47 -> 149 (Frame Terakhir + Teks & CTA)
-  // Scroll 5 (Step 4): Bergulir halus ke section Footer (#contact)
+  // Scroll 1 (Step 0): Frame 0
+  // Scroll 2 (Step 1): Frame 4
+  // Scroll 3 (Step 2): Frame 47
+  // Scroll 4 (Step 3): Frame 149 (Frame Terakhir + Teks & CTA)
+  // Scroll 5 (Step 4): Meluncur ke Footer
   const CHECKPOINT_TARGETS = [0, 4, 47, 149, 149];
 
-  /* ── Durasi & Kecepatan Animasi (Bisa Disesuaikan) ───────────────────────
-     - ANIMATION_DURATION: Durasi transisi frame (dalam detik). 
-       Bisa dinaikkan (misal 2.2 atau 2.5) agar lebih lambat & sinematik.
-     - EASE_TYPE: Easing curves ('power2.out', 'power3.out', 'cubic-bezier', dsb).
-  ────────────────────────────────────────────────────────────────────────── */
-  const ANIMATION_DURATION = 2.2; // Durasi animasi dari satu checkpoint ke checkpoint berikutnya (dalam detik)
-  const EASE_TYPE = 'power2.out'; // Kurva animasi sinematik yang mulus
+  const ANIMATION_DURATION = 2.2;
+  const EASE_TYPE = 'power2.out';
 
   /* ── State ──────────────────────────────────────────────────────────── */
   const frames = new Array(TOTAL_FRAMES);
@@ -53,7 +48,6 @@ export function initScrollytelling() {
   let isAnimating = false;
 
   /* ── Helpers ─────────────────────────────────────────────────────────── */
-
   function padIndex(n) {
     return String(n).padStart(3, '0');
   }
@@ -66,14 +60,34 @@ export function initScrollytelling() {
   function resizeCanvas() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-    if (frames[currentFrame] && frames[currentFrame].complete) {
-      drawFrame(currentFrame);
-    }
+    drawFrame(currentFrame);
   }
 
-  /* ── Canvas Draw (object-fit: cover logic) ───────────────────────────── */
+  /* ── Canvas Draw (object-fit: cover logic + fallback) ───────────────────── */
   function drawFrame(index) {
-    const img = frames[index];
+    let img = frames[index];
+
+    // Fallback: Jika frame yang diminta belum selesai diload oleh browser,
+    // cari frame terdekat yang sudah ter-load agar canvas TIDAK BLANK.
+    if (!img || !img.complete || img.naturalWidth === 0) {
+      // Cari ke belakang dulu
+      for (let i = index - 1; i >= 0; i--) {
+        if (frames[i] && frames[i].complete && frames[i].naturalWidth > 0) {
+          img = frames[i];
+          break;
+        }
+      }
+      // Jika belum ketemu, cari ke depan
+      if (!img || !img.complete || img.naturalWidth === 0) {
+        for (let i = index + 1; i < TOTAL_FRAMES; i++) {
+          if (frames[i] && frames[i].complete && frames[i].naturalWidth > 0) {
+            img = frames[i];
+            break;
+          }
+        }
+      }
+    }
+
     if (!img || !img.complete || img.naturalWidth === 0) return;
 
     const cw = canvas.width;
@@ -89,56 +103,65 @@ export function initScrollytelling() {
     ctx.drawImage(img, dx, dy, iw * scale, ih * scale);
   }
 
-  /* ── Progressive Preloader: batasi beban awal, lalu lanjutkan di batch ── */
-  function preloadAllFrames() {
+  /* ── Progressive Preloader: muat frame 0 dulu, sisanya di background ── */
+  function preloadFirstFrame() {
     return new Promise((resolve) => {
-      const BATCH_SIZE = 12;
-      let loaded = 0;
-
-      function loadChunk(startIndex) {
-        const endIndex = Math.min(TOTAL_FRAMES, startIndex + BATCH_SIZE);
-
-        for (let i = startIndex; i < endIndex; i++) {
-          if (frames[i]) {
-            loaded++;
-            continue;
-          }
-
-          const img = new Image();
-          img.decoding = 'async';
-          img.loading = 'lazy';
-          img.src = frameSrc(i);
-          frames[i] = img;
-
-          img.onload = img.onerror = () => {
-            loaded++;
-            const pct = Math.round((loaded / TOTAL_FRAMES) * 100);
-
-            if (preloadBar) preloadBar.style.width = pct + '%';
-            if (preloadLabel) preloadLabel.textContent = `Memuat animasi… ${pct}%`;
-
-            if (loaded === TOTAL_FRAMES) {
-              resolve();
-            }
-          };
-        }
-
-        if (endIndex < TOTAL_FRAMES) {
-          requestAnimationFrame(() => loadChunk(endIndex));
-        } else if (loaded === TOTAL_FRAMES) {
-          resolve();
-        }
-      }
-
-      loadChunk(0);
+      const img0 = new Image();
+      img0.decoding = 'async';
+      img0.src = frameSrc(0);
+      frames[0] = img0;
+      img0.onload = img0.onerror = () => resolve();
     });
   }
 
-  /* ── Panel Visibility (Hanya muncul di Scroll ke-4 / Step 3) ──────────── */
-  function updatePanels(stepIndex) {
-    // Panel 3 (Teks Overlay) hanya aktif pada Scroll ke-4 (Step 3)
-    const inS4 = stepIndex >= 3;
+  function preloadRemainingFrames() {
+    const BATCH_SIZE = 12;
+    let loaded = 1;
 
+    function loadChunk(startIndex) {
+      const endIndex = Math.min(TOTAL_FRAMES, startIndex + BATCH_SIZE);
+
+      for (let i = startIndex; i < endIndex; i++) {
+        if (frames[i]) {
+          loaded++;
+          continue;
+        }
+
+        const img = new Image();
+        img.decoding = 'async';
+        img.loading = 'lazy';
+        img.src = frameSrc(i);
+        frames[i] = img;
+
+        img.onload = img.onerror = () => {
+          loaded++;
+          const pct = Math.round((loaded / TOTAL_FRAMES) * 100);
+
+          if (preloadBar) preloadBar.style.width = pct + '%';
+          if (preloadLabel) preloadLabel.textContent = `Memuat animasi… ${pct}%`;
+
+          // Jika frame saat ini sedang perlu di-render ulang
+          if (Math.round(renderObj.frame) === i) {
+            drawFrame(i);
+          }
+
+          if (loaded >= TOTAL_FRAMES) {
+            if (preloadOverlay) preloadOverlay.classList.add('is-hidden');
+          }
+        };
+      }
+
+      if (endIndex < TOTAL_FRAMES) {
+        requestAnimationFrame(() => loadChunk(endIndex));
+      }
+    }
+
+    loadChunk(1);
+  }
+
+  /* ── Panel Visibility ────────────────────────────────────────────────── */
+  function updatePanels(stepIndex) {
+    const inS4 = stepIndex >= 3;
     panel1 && panel1.classList.toggle('is-active', false);
     panel2 && panel2.classList.toggle('is-active', false);
     panel3 && panel3.classList.toggle('is-active', inS4);
@@ -151,7 +174,7 @@ export function initScrollytelling() {
     });
   }
 
-  /* ── CTA Reveal (Hanya di scroll ke-4 / Step 3) ─────────────────────── */
+  /* ── CTA Reveal ─────────────────────────────────────────────────────── */
   function updateCTA(stepIndex) {
     if (!ctaBtn) return;
 
@@ -174,21 +197,15 @@ export function initScrollytelling() {
     }
   }
 
-  const FPS_STANDARD = 24; // Standar 24 FPS sinematik
+  const FPS_STANDARD = 24;
 
   /* ── Animate Frame Smoothly to Target Checkpoint ────────────────────── */
   function animateFrameTo(targetFrame, onCompleteCallback) {
     if (frameTween) frameTween.kill();
     isAnimating = true;
 
-    // Hitung selisih frame yang akan dijalankan
     const frameDistance = Math.abs(targetFrame - currentFrame);
-
-    // Perhitungan durasi presisi berdasarkan aturan 24 FPS:
-    // Khusus 4 frame (Step 1): 4 / 24 = 0.167 detik (Sesuai FPS riil, sangat smooth & tidak patah)
     let calculatedDuration = frameDistance / FPS_STANDARD;
-    
-    // Beri batas durasi sinematik yang seimbang
     calculatedDuration = Math.max(0.16, Math.min(calculatedDuration, 1.8));
 
     frameTween = gsap.to(renderObj, {
@@ -209,7 +226,7 @@ export function initScrollytelling() {
     });
   }
 
-  /* ── Main Init (runs immediately after preload) ─────────────────────── */
+  /* ── Main Init ───────────────────────────────────────────────────────── */
   function initAnimation() {
     gsap.registerPlugin(ScrollTrigger);
 
@@ -219,14 +236,12 @@ export function initScrollytelling() {
     drawFrame(0);
     canvas.classList.add('is-ready');
 
-    /* ── ScrollTrigger Snap ke 5 Checkpoint Presisi [0, 0.25, 0.5, 0.75, 1] ──── */
     let lastStep = -1;
 
     ScrollTrigger.create({
       trigger: section,
       start: 'top top',
       end: 'bottom bottom',
-      // Snap tepat ke 5 posisi checkpoint asli (0, 0.25, 0.5, 0.75, 1)
       snap: {
         snapTo: [0, 0.25, 0.5, 0.75, 1],
         duration: { min: 0.4, max: 0.9 },
@@ -238,35 +253,26 @@ export function initScrollytelling() {
         let step = 0;
 
         if (progress >= 0.92) {
-          step = 4; // Scroll ke-5 -> Footer
+          step = 4;
         } else if (progress >= 0.68) {
-          step = 3; // Scroll ke-4 -> Frame 149 (Klimaks + Teks & CTA)
+          step = 3;
         } else if (progress >= 0.42) {
-          step = 2; // Scroll ke-3 -> Frame 47
+          step = 2;
         } else if (progress >= 0.18) {
-          step = 1; // Scroll ke-2 -> Frame 4 (Khusus 4 frame 0.167s)
+          step = 1;
         } else {
-          step = 0; // Scroll ke-1 -> Frame 0
+          step = 0;
         }
 
-        // Hitung ulang hanya jika berpindah step
         if (step !== lastStep) {
           lastStep = step;
 
-          // Gradasi pembatas top fade out jika step >= 1
           if (step >= 1) {
             section.classList.add('hide-top-gradient');
           } else {
             section.classList.remove('hide-top-gradient');
           }
 
-          // Scroll ke-5 (Step 4): Meluncur halus ke footer #contact
-          if (step === 4) {
-            const footer = document.getElementById('contact');
-            if (footer) footer.scrollIntoView({ behavior: 'smooth' });
-          }
-
-          // Jalankan animasi ke target frame checkpoint persis dengan durasi 24 FPS
           const targetFrame = CHECKPOINT_TARGETS[step];
           animateFrameTo(targetFrame);
 
@@ -289,7 +295,6 @@ export function initScrollytelling() {
       },
     });
 
-    /* ── Canvas z-index management ───────────────────────────────────── */
     ScrollTrigger.create({
       trigger: section,
       start: 'top bottom',
@@ -307,14 +312,19 @@ export function initScrollytelling() {
 
     updatePanels(0);
     updateDots(0);
+    ScrollTrigger.refresh();
   }
 
-  /* ── Boot Sequence: Immediate Load on Page Startup ──────────────────── */
-  // Preload gambar langsung saat awal halaman di-load tanpa menunggu scroll
-  preloadAllFrames().then(() => {
+  /* ── Boot Sequence: Non-blocking Immediate Load ─────────────────────── */
+  preloadFirstFrame().then(() => {
+    initAnimation();
+
     if (preloadOverlay) {
-      preloadOverlay.classList.add('is-hidden');
+      setTimeout(() => {
+        preloadOverlay.classList.add('is-hidden');
+      }, 600);
     }
-    setTimeout(initAnimation, 300);
+
+    preloadRemainingFrames();
   });
 }
